@@ -1,0 +1,25 @@
+created: 20230111014902977
+creator: drevarr
+modified: 20240117051640041
+modifier: drevarr
+revision: 9
+tags: $:/tags/StartupAction/PostRender
+title: $:/JEL/Startup-States
+type: text/vnd.tiddlywiki
+
+<$action-setfield $tiddler="$:/state/curTab" $value="Overview"/>
+<$action-setfield $tiddler="$:/state/curFight" $value="Fight-1"/>
+<$action-setfield $tiddler="$:/state/curControl-In" $value="Blinded"/>
+<$action-setfield $tiddler="$:/state/curControl-Out" $value="Blinded"/>
+<$action-setfield $tiddler="$:/state/curAuras-Out" $value="Fire Aura"/>
+<$action-setfield $tiddler="$:/state/curAuras-In" $value="Fire"/>
+<$action-setfield $tiddler="$:/state/curStackingBuffs" $value="might"/>
+<$action-setfield $tiddler="$:/state/curBurstTableDamage" $value="Ch5Ca"/>
+<$action-setfield $tiddler="$:/state/curBurstTableType" $value="Cumulative"/>
+<$action-setfield $tiddler="$:/state/curChart" $value="Kills/Downs/DPS"/>
+<$action-setfield $tiddler="$:/temp/BurstDamage" $field="curBurstTableDamage" $value="Ch5Ca"/>
+<$action-setfield $tiddler="$:/temp/BurstDamage" $field="curBurstTableType" $value="Cumulative"/>
+<$action-setfield $tiddler="$:/state/toc/OtherLogs-2023-02 KDR-1753190578" $value="open"/>
+<$action-setfield $tiddler="$:/state/curDamageWithBuffs" $value="might"/>
+<$action-setfield $tiddler="$:/state/curDefense" $value="Downed"/>
+<$action-setfield $tiddler="$:/state/DmgTable" $value="Total"/>

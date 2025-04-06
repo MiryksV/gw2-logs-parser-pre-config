@@ -1,0 +1,35 @@
+created: 20230911231547373
+creator: drevarr
+modified: 20231006015851812
+modifier: drevarr
+revision: 2
+tags: $:/tags/Stylesheet
+title: xToolTip
+type: text/css
+
+/* Tooltip container */
+.xtooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.xtooltip .xtooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.xtooltip:hover .xtooltiptext {
+  visibility: visible;
+}
