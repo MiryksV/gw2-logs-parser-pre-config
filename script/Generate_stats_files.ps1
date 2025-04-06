@@ -59,37 +59,62 @@ Write-Output "###### In-game logs path:     $arcDpslogsDir"
 Write-Output "###### Extract date:          $displayExtractDate"
 
 Write-Output "######## Fetch arcdps_top_stats_parser @latest version #######################"
-## Initialize and update Git submodules
-## Update latest repositories if Git is installed
-if (Get-Command git -ErrorAction SilentlyContinue) {
-  # Initialize your local configuration file
-  git submodule init
-  # Fetch all the data from sub-repositories
-  git submodule update
+$topStatsParserRepoUrl = "https://api.github.com/repos/Drevarr/arcdps_top_stats_parser/releases/latest"
+$topStatsParserRepoUrlResponse = Invoke-RestMethod -Uri $topStatsParserRepoUrl
+$topStatsParserLatestVersion = $topStatsParserRepoUrlResponse.tag_name
+$topStatsParserCurrentVersion = "v3.5.20-TW5"
+if ($topStatsParserCurrentVersion -ne $topStatsParserLatestVersion) {
+  Write-Output "Downloading & updating arcdps_top_stats_parser @latest $topStatsParserLatestVersion..."
+  # Fetch the zip file
+  $topStatsParserAssetName = "arcdps_top_stats_parser.zip"
+  $topStatsParserLatestReleaseUrl = $topStatsParserRepoUrlResponse.zipball_url
+  Invoke-WebRequest -Uri $topStatsParserLatestReleaseUrl -OutFile $topStatsParserAssetName
+
+  # Unzip the downloaded file
+  Write-Output "Unzipping the latest arcdps_top_stats_parser.zip..."
+  $topStatsParserTempDir = "..\tmp"
+  Expand-Archive -Path $topStatsParserAssetName -DestinationPath $topStatsParserTempDir -Force
+
+  # Move the contents from the nested temporary directory to the desired directory while preserving the structure
+  $topStatsParserNestedDir = Get-ChildItem -Path $topStatsParserTempDir | Where-Object { $_.PSIsContainer } | Select-Object -ExpandProperty FullName
+  Get-ChildItem -Path "$topStatsParserNestedDir\*" -Recurse | ForEach-Object {
+    $destinationPath = $_.FullName.Replace($topStatsParserNestedDir, $topStatsParserDir)
+    if ($_.PSIsContainer) {
+      New-Item -ItemType Directory -Path $destinationPath -Force > $null
+    }
+    else {
+      Copy-Item -Path $_.FullName -Destination $destinationPath -Force
+    }
+  }
+  
+  # Remove the temporary directory and the zip file
+  Remove-Item -Path $topStatsParserTempDir -Recurse
+  Remove-Item -Path $topStatsParserAssetName
 }
 else {
-  Write-Error "Git not installed, can't initialize and fetch needed repositories. Please install it from https://git-scm.com/downloads."
-  Read-Host
-  exit 1
+  Write-Output "arcdps_top_stats_parser already @latest $topStatsParserLatestVersion"
 }
+
 Write-Output "######## Update GW2-Elite-Insights-Parser CLI @latest version ################"
-$repoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/latest"
-$latestReleaseUrl = (Invoke-RestMethod -Uri $repoUrl).assets | Where-Object { $_.name -eq $assetName } | Select-Object -ExpandProperty browser_download_url
-$latestVersion = (Invoke-RestMethod -Uri $repoUrl).tag_name
-$currentVersion = "v3.5.0.0"
-if ($currentVersion -ne $latestVersion) {
-  Write-Output "Downloading & updating GW2EICLI @latest $latestVersion..."
-  $assetName = "GW2EICLI.zip"
-  $latestReleaseUrl = (Invoke-RestMethod -Uri $repoUrl).assets | Where-Object { $_.name -eq $assetName } | Select-Object -ExpandProperty browser_download_url
-  Invoke-WebRequest -Uri $latestReleaseUrl -OutFile $assetName
+$eliteInsightsRepoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/latest"
+$eliteInsightsLatestVersion = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).tag_name
+$eliteInsightsCurrentVersion = "v3.5.0.0"
+if ($eliteInsightsCurrentVersion -ne $eliteInsightsLatestVersion) {
+  Write-Output "Downloading & updating GW2EICLI @latest $eliteInsightsLatestVersion..."
+  # Fetch the zip file
+  $eliteInsightsAssetName = "GW2EICLI.zip"
+  $eliteInsightsLatestReleaseUrl = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).assets | Where-Object { $_.name -eq $eliteInsightsAssetName } | Select-Object -ExpandProperty browser_download_url
+  Invoke-WebRequest -Uri $eliteInsightsLatestReleaseUrl -OutFile $eliteInsightsAssetName
 
   # Unzip the downloaded file
   Write-Output "Unzipping the latest GW2EICLI.zip..."
-  Expand-Archive -Path $assetName -DestinationPath $eliteInsightsDir -Force
-  Remove-Item -Path $assetName
+  Expand-Archive -Path $eliteInsightsAssetName -DestinationPath $eliteInsightsDir -Force
+
+  # Remove the zip file
+  Remove-Item -Path $eliteInsightsAssetName
 }
 else {
-  Write-Output "GW2EICLI already @latest $latestVersion"
+  Write-Output "GW2EICLI already @latest $eliteInsightsLatestVersion"
 }
 
 ## Check if python3 is installed to continue, and install required Python packages

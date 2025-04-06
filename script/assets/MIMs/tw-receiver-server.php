@@ -1,7 +1,7 @@
 <?php
 // set a strong secret key. 
 // Set the same secret inside the plugin UI (Control Panel > Saving > TW Receiver)
-$userpassword = ""; 
+$userpassword = "hello i'm a short friendly password"; 
 
 //version 0.0.5
 
@@ -27,7 +27,7 @@ $backupcount = 10;
 // if you don't have access to a non accessible space, or aren't sure how to do this, do not use this feature
 // instead set $extSecKeyPath = false and use the $password variable
 // wherever you set the password, have fun with it and make it a long list of words
-$extSecKeyPath = false; 
+$extSecKeyPath = false;
 
 // there's no way to securely transmit over HTTP. Using HTTP your password and content can be viewed and changed
 // use of HTTPS (TLS) is strongly recommended.

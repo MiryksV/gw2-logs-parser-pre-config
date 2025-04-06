@@ -8,7 +8,7 @@ Finaly, you just need to import them in the hosted `TW5_Top_Stat_Parse.html` (ex
 # System Requirements
 
 - Python3 (https://www.python.org/downloads/)
-- Git (https://git-scm.com/downloads)
+- ~~Git (https://git-scm.com/downloads)~~ not anymore
 
 # Usage
 
