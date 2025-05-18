@@ -98,7 +98,7 @@ else {
 Write-Output "######## Update GW2-Elite-Insights-Parser CLI @latest version ################"
 $eliteInsightsRepoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/latest"
 $eliteInsightsLatestVersion = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).tag_name
-$eliteInsightsCurrentVersion = "v3.7.0.0"
+$eliteInsightsCurrentVersion = "v3.9.0.0"
 if ($eliteInsightsCurrentVersion -ne $eliteInsightsLatestVersion) {
   Write-Output "Downloading & updating GW2EICLI @latest $eliteInsightsLatestVersion..."
   # Fetch the zip file
