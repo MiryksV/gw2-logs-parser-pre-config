@@ -58,7 +58,7 @@ Write-Output "###### Configuration #############################################
 Write-Output "###### In-game logs path:     $arcDpslogsDir"
 Write-Output "###### Extract date:          $displayExtractDate"
 
-Write-Output "######## Fetch arcdps_top_stats_parser @latest version #######################"
+Write-Output "######## Update arcdps_top_stats_parser @latest version ######################"
 $topStatsParserRepoUrl = "https://api.github.com/repos/Drevarr/arcdps_top_stats_parser/releases/latest"
 $topStatsParserRepoUrlResponse = Invoke-RestMethod -Uri $topStatsParserRepoUrl
 $topStatsParserLatestVersion = $topStatsParserRepoUrlResponse.tag_name
@@ -98,7 +98,7 @@ else {
 Write-Output "######## Update GW2-Elite-Insights-Parser CLI @latest version ################"
 $eliteInsightsRepoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/latest"
 $eliteInsightsLatestVersion = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).tag_name
-$eliteInsightsCurrentVersion = "v3.9.0.0"
+$eliteInsightsCurrentVersion = "v3.11.1.0"
 if ($eliteInsightsCurrentVersion -ne $eliteInsightsLatestVersion) {
   Write-Output "Downloading & updating GW2EICLI @latest $eliteInsightsLatestVersion..."
   # Fetch the zip file
@@ -207,15 +207,17 @@ if (-not (Test-Path -Path $tidPath)) {
 Get-ChildItem -Path "$jsonPath\*.tid" | ForEach-Object {
   Copy-Item -Path $_.FullName -Destination $tidPath -Force
 }
-
 Write-Output "##############################################################################"
-Write-Output "### 3. Upload .tid to show in web page #######################################"
+Write-Host   "### " -NoNewline
+Write-Host   "Script execution completed" -ForegroundColor Green -NoNewline
+Write-Output " ###############################################"
+Write-Output "Please, import .tid files in data folder to your hosted TW5_Top_Stat_Parse.html."
+Write-Output "Then, press red top-right Save button to persist logs."
 Write-Output "##############################################################################"
-Write-Output ""
-Write-Output "==> Please import .tid files to your hosted TW5_Top_Stat_Parse.html, then press red top-right Save button to get the .html file. <=="
-Write-Output ""
 
 # Success! \o/
-Write-Output "Script execution completed. Press Enter to exit."
+Write-Output ""
+Write-Host "Script execution completed. Press Enter to exit." -ForegroundColor Magenta
+
 Read-Host
 exit 0
