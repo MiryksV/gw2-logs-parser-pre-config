@@ -1,3 +1,5 @@
+$scriptStartTime = Get-Date
+
 # Read config file
 $configFile = ".\edit_me.conf"
 $configTable = @{}
@@ -48,7 +50,6 @@ if ($extractDate -eq "") {
 else {
   $displayExtractDate = $extractDate
 }
-
 
 
 # Prepare the environment
@@ -207,17 +208,31 @@ if (-not (Test-Path -Path $tidPath)) {
 Get-ChildItem -Path "$jsonPath\*.tid" | ForEach-Object {
   Copy-Item -Path $_.FullName -Destination $tidPath -Force
 }
+
+# Final instructions
 Write-Output "##############################################################################"
 Write-Host   "### " -NoNewline
-Write-Host   "Script execution completed" -ForegroundColor Green -NoNewline
-Write-Output " ###############################################"
+Write-Host   "Script execution completed!" -ForegroundColor Green -NoNewline
+Write-Output " ##############################################"
 Write-Output "Please, import .tid files in data folder to your hosted TW5_Top_Stat_Parse.html."
 Write-Output "Then, press red top-right Save button to persist logs."
 Write-Output "##############################################################################"
 
-# Success! \o/
-Write-Output ""
-Write-Host "Script execution completed. Press Enter to exit." -ForegroundColor Magenta
 
+# Success! \o/
+$scriptEndTime = Get-Date
+$duration = $scriptEndTime - $scriptStartTime
+$m = $duration.Minutes
+$s = $duration.Seconds
+Write-Output ""
+if ($m -eq 0) {
+  Write-Host ("Script execution completed in {0}sec." -f $s) -ForegroundColor Magenta
+}
+else {
+  Write-Host ("Script execution completed in {0}min{1}sec." -f $m, $s) -ForegroundColor Magenta
+}
+Write-Output ""
+
+Write-Output "Press Enter to exit..."
 Read-Host
 exit 0
