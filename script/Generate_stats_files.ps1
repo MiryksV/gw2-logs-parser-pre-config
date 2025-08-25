@@ -32,6 +32,10 @@ if ($configTable.ContainsKey("EXTRACT_DATE")) {
     exit 1
   }
 }
+$eliteInsightsTargetVersion = ""
+if ($configTable.ContainsKey("GW2EI_VERSION")) {
+  $eliteInsightsTargetVersion = $configTable["GW2EI_VERSION"]
+}
 
 # Specific script paths
 $eliteInsightsDir = "..\GW2EICLI"
@@ -96,14 +100,35 @@ else {
   Write-Output "arcdps_top_stats_parser already @latest $topStatsParserLatestVersion"
 }
 
-Write-Output "######## Update GW2-Elite-Insights-Parser CLI @latest version ################"
+Write-Output "######## Update GW2-Elite-Insights-Parser CLI @latest|target version #########"
 $eliteInsightsRepoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/latest"
 $eliteInsightsLatestVersion = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).tag_name
 $eliteInsightsCurrentVersion = "v3.11.1.0"
-if ($eliteInsightsCurrentVersion -ne $eliteInsightsLatestVersion) {
+# Fetch the zip file
+$eliteInsightsAssetName = "GW2EICLI.zip"
+## Update GW2-Elite-Insights-Parser @target version if specified
+if (($eliteInsightsTargetVersion -ne "") -and ($eliteInsightsCurrentVersion -ne $eliteInsightsTargetVersion)) {
+  Write-Output "Downloading & updating GW2EICLI @target $eliteInsightsTargetVersion..."
+  
+  try {
+    $eliteInsightsTargetRepoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/tags/$eliteInsightsTargetVersion"
+    $eliteInsightsTargetReleaseUrl = (Invoke-RestMethod -Uri $eliteInsightsTargetRepoUrl).assets | Where-Object { $_.name -eq $eliteInsightsAssetName } | Select-Object -ExpandProperty browser_download_url
+    Invoke-WebRequest -Uri $eliteInsightsTargetReleaseUrl -OutFile $eliteInsightsAssetName
+  
+    # Unzip the downloaded file
+    Write-Output "Unzipping the target GW2EICLI.zip..."
+    Expand-Archive -Path $eliteInsightsAssetName -DestinationPath $eliteInsightsDir -Force
+  
+    # Remove the zip file
+    Remove-Item -Path $eliteInsightsAssetName
+  }
+  catch {
+    Write-Warning "Can't fetch GW2EICLI @target $eliteInsightsTargetVersion! Please check format (ex: v1.2.3.4), if version is available, or set empty to use the latest version."
+  }
+}
+## Update GW2-Elite-Insights-Parser @latest version
+elseif (($eliteInsightsTargetVersion -eq "") -and ($eliteInsightsCurrentVersion -ne $eliteInsightsLatestVersion)) {
   Write-Output "Downloading & updating GW2EICLI @latest $eliteInsightsLatestVersion..."
-  # Fetch the zip file
-  $eliteInsightsAssetName = "GW2EICLI.zip"
   $eliteInsightsLatestReleaseUrl = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).assets | Where-Object { $_.name -eq $eliteInsightsAssetName } | Select-Object -ExpandProperty browser_download_url
   Invoke-WebRequest -Uri $eliteInsightsLatestReleaseUrl -OutFile $eliteInsightsAssetName
 
@@ -115,7 +140,12 @@ if ($eliteInsightsCurrentVersion -ne $eliteInsightsLatestVersion) {
   Remove-Item -Path $eliteInsightsAssetName
 }
 else {
-  Write-Output "GW2EICLI already @latest $eliteInsightsLatestVersion"
+  if ($eliteInsightsTargetVersion -ne "") {
+    Write-Output "GW2EICLI already @target $eliteInsightsTargetVersion"
+  }
+  else {
+    Write-Output "GW2EICLI already @latest $eliteInsightsLatestVersion"
+  }
 }
 
 ## Check if python3 is installed to continue, and install required Python packages
@@ -173,12 +203,32 @@ if ($zevtcFiles.Count -eq 0) {
   Read-Host
   exit 1
 }
+## Running GW2-Elite-Insights-Parser CLI for each .zevtc file
+try {
+  foreach ($file in Get-ChildItem -Path "$logsPath\*.zevtc") {
+    # TODO: add verbose option
+    & "$eliteInsightsDir\GuildWars2EliteInsights-CLI.exe" -c "$customConfigPath\EI_detailed_json_combat_replay_custom.conf" "$file" > $null
+  
+    if ($LASTEXITCODE -ne 0) {
+      throw "GW2-Elite-Insights-Parser failed for file: $($file.Name) (Exit code: $LASTEXITCODE)"
+    }
+  }
+}
+catch {
+  Write-Output "##############################################################################"
+  Write-Host   "### " -NoNewline
+  Write-Host   "Script execution failed!" -ForegroundColor Red -NoNewline
+  Write-Output " #################################################"
+  Write-Output "Something went wrong during generation .json files using GW2-Elite-Insights-Parser."
+  Write-Output "Please, contact me: miryksv@gmail.com"
+  Write-Output "##############################################################################"
+  Write-Output "Press Enter to exit..."
+  Read-Host
+  exit 1
+}
+## Extract .json file in a folder
 if (-not (Test-Path -Path $jsonPath)) {
   New-Item -ItemType Directory -Path $jsonPath > $null
-}
-foreach ($file in Get-ChildItem -Path "$logsPath\*.zevtc") {
-  # TODO: add verbose option
-  & "$eliteInsightsDir\GuildWars2EliteInsights-CLI.exe" -c "$customConfigPath\EI_detailed_json_combat_replay_custom.conf" "$file" > $null
 }
 Get-ChildItem -Path "$logsPath\*.json" | ForEach-Object {
   Move-Item -Path $_.FullName -Destination $jsonPath -Force
@@ -195,16 +245,29 @@ git apply $patch -q
 Set-Location "..\script"
 ## Running script with extractDate
 if ($displayExtractDate -eq "now") {
+  # TODO: add verbose option
   python "$topStatsParserDir\TW5_parse_top_stats_detailed.py" $jsonPath > $null
 }
 else {
   $dateTime = [datetime]::ParseExact($extractDate, 'yyyyMMdd', $null).AddHours(22).ToString("yyyy-MM-ddTHH:mm:ss")
   python "$topStatsParserDir\TW5_parse_top_stats_detailed.py" $jsonPath -d "$dateTime" > $null
 }
+if ($LASTEXITCODE -ne 0) {
+  Write-Output "##############################################################################"
+  Write-Host   "### " -NoNewline
+  Write-Host   "Script execution failed!" -ForegroundColor Red -NoNewline
+  Write-Output " #################################################"
+  Write-Output "Something went wrong during generation .tid files using arcdps_top_stats_parser."
+  Write-Output "Please, contact me: miryksv@gmail.com"
+  Write-Output "##############################################################################"
+  Write-Output "Press Enter to exit..."
+  Read-Host
+  exit 1
+}
+## Extract .tid file in a folder
 if (-not (Test-Path -Path $tidPath)) {
   New-Item -ItemType Directory -Path $tidPath > $null
 }
-## Extract .tid file in a folder
 Get-ChildItem -Path "$jsonPath\*.tid" | ForEach-Object {
   Copy-Item -Path $_.FullName -Destination $tidPath -Force
 }
