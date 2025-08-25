@@ -126,7 +126,7 @@
       "System.ValueTuple/4.5.0": {},
       "GW2EIBuilders/0.67.0": {
         "dependencies": {
-          "GW2EIEvtcParser": "0.71.2",
+          "GW2EIEvtcParser": "0.71.3",
           "GW2EIGW2API": "3.0.1",
           "GW2EIJSON": "3.12.0",
           "System.Text.Encoding.CodePages": "8.0.0"
@@ -160,14 +160,14 @@
           }
         }
       },
-      "GW2EIEvtcParser/0.71.2": {
+      "GW2EIEvtcParser/0.71.3": {
         "dependencies": {
           "GW2EIGW2API": "3.0.1"
         },
         "runtime": {
           "GW2EIEvtcParser.dll": {
-            "assemblyVersion": "0.71.2.0",
-            "fileVersion": "0.71.2.0"
+            "assemblyVersion": "0.71.3.0",
+            "fileVersion": "0.71.3.0"
           }
         }
       },
@@ -198,7 +198,7 @@
           "GW2EIBuilders": "0.67.0",
           "GW2EIDPSReport": "7.0.0",
           "GW2EIDiscord": "4.0.0",
-          "GW2EIEvtcParser": "0.71.2",
+          "GW2EIEvtcParser": "0.71.3",
           "GW2EIGW2API": "3.0.1",
           "GW2EIWingman": "4.0.0",
           "System.Configuration.ConfigurationManager": "8.0.1"
@@ -336,7 +336,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "GW2EIEvtcParser/0.71.2": {
+    "GW2EIEvtcParser/0.71.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
