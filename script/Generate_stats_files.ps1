@@ -13,6 +13,7 @@ Get-Content -Path $configFile | ForEach-Object {
 # Retrieve values from the config hashtable
 if (-not $configTable.ContainsKey("ARC_DPS_LOGS_DIR")) {
   Write-Error "ARC_DPS_LOGS_DIR not found. Please check your edit_me.conf file."
+  Write-Output "Press Enter to exit..."
   Read-Host
   exit 1
 }
@@ -20,6 +21,7 @@ $arcDpslogsDir = $configTable["ARC_DPS_LOGS_DIR"]
 $resolvedPath = Resolve-Path -Path $arcDpslogsDir -ErrorAction SilentlyContinue
 if (-not $resolvedPath) {
   Write-Error "Cannot resolve the ARC_DPS_LOGS_DIR path. Please provide in edit_me.conf file a correct path (e.g. `C:\Program Files (x86)\Guild Wars 2\addons\arcdps\arcdps.cbtlogs\WvW (1)\Player`)."
+  Write-Output "Press Enter to exit..."
   Read-Host
   exit 1
 }
@@ -28,6 +30,7 @@ if ($configTable.ContainsKey("EXTRACT_DATE")) {
   $extractDate = $configTable["EXTRACT_DATE"]
   if ($extractDate -ne "" -and $extractDate -notmatch '^\d{8}$') {
     Write-Error "Invalid EXTRACT_DATE format. Please use YYYYMMDD format."
+    Write-Output "Press Enter to exit..."
     Read-Host
     exit 1
   }
@@ -103,7 +106,7 @@ else {
 Write-Output "######## Update GW2-Elite-Insights-Parser CLI @latest|target version #########"
 $eliteInsightsRepoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/latest"
 $eliteInsightsLatestVersion = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).tag_name
-$eliteInsightsCurrentVersion = "v3.11.1.0"
+$eliteInsightsCurrentVersion = "v3.12.0.2"
 # Fetch the zip file
 $eliteInsightsAssetName = "GW2EICLI.zip"
 ## Update GW2-Elite-Insights-Parser @target version if specified
@@ -152,6 +155,7 @@ else {
 Write-Output "######## Install required Python packages ####################################"
 if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
   Write-Error "Python3 is not installed. Please install it from https://www.python.org/downloads/."
+  Write-Output "Press Enter to exit..."
   Read-Host
   exit 1
 }
@@ -170,6 +174,7 @@ $pipPackages | ForEach-Object {
     python.exe -m pip install $_ -q
     if (-not $?) {
       Write-Error "Failed to install package: $_. Please install it manually."
+      Write-Output "Press Enter to exit..."
       Read-Host
       exit 1
     }
@@ -200,6 +205,7 @@ Write-Output "######## Converting .zevtc to .json, using GW2-Elite-Insights-Pars
 $zevtcFiles = Get-ChildItem -Path "$logsPath\*.zevtc"
 if ($zevtcFiles.Count -eq 0) {
   Write-Output "No .zevtc files found to process."
+  Write-Output "Press Enter to exit..."
   Read-Host
   exit 1
 }
