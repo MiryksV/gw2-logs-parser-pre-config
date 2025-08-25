@@ -45,6 +45,7 @@ $eliteInsightsDir = "..\GW2EICLI"
 $topStatsParserDir = "..\arcdps_top_stats_parser"
 $customConfigPath = ".\custom-config"
 $dataPath = ".\data"
+$patchesPath = ".\patches"
 $logsPath = ".\data\logs"
 $jsonPath = ".\data\json"
 $tidPath = ".\data\tid"
@@ -242,12 +243,15 @@ Get-ChildItem -Path "$logsPath\*.json" | ForEach-Object {
 
 # Generate .tid file from .json, using arcdps_top_stats_parser
 Write-Output "######## Generating .tid file from .json, using arcdps_top_stats_parser ######"
-## Patch Python to add argument to adjust date with extract date
-$patch = "addExtractDateInArgumentPythonScript.patch"
+## Patch Python script (ddd argument to adjust date with extract date, handle unknown beta professions)
 $topStatsParserDir = "..\arcdps_top_stats_parser"
-Copy-Item -Path ".\$patch" -Destination $topStatsParserDir -Force
+$patchArg = "addExtractDateInArgumentPythonScript.patch"
+$patchUnknown = "handleUnknownProfessions.patch"
+Copy-Item -Path "$patchesPath\$patchArg" -Destination $topStatsParserDir -Force
+Copy-Item -Path "$patchesPath\$patchUnknown" -Destination $topStatsParserDir -Force
 Set-Location $topStatsParserDir
-git apply $patch -q
+git apply $patchArg -q
+git apply $patchUnknown -q
 Set-Location "..\script"
 ## Running script with extractDate
 if ($displayExtractDate -eq "now") {
