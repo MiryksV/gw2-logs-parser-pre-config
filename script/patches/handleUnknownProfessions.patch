@@ -52,56 +52,56 @@ index 332fbaf..8b75750 100644
  	"Tempest": ["https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_20px.png", "https://wiki.guildwars2.com/images/4/40/Tempest_tango_icon_48px.png"],
  	"Weaver": ["https://wiki.guildwars2.com/images/2/2f/Weaver_tango_icon_20px.png", "https://wiki.guildwars2.com/images/2/2f/Weaver_tango_icon_48px.png"],
  	"Catalyst": ["https://wiki.guildwars2.com/images/0/08/Catalyst_tango_icon_20px.png", "https://wiki.guildwars2.com/images/0/08/Catalyst_tango_icon_48px.png"],
-+	"Evoker": ["https://wiki.guildwars2.com/images/e/e3/Evoker_icon_small.png", "https://wiki.guildwars2.com/images/e/e3/Evoker_icon_small.png"], # TODO: Find 48px icons
++	"Evoker": ["https://wiki.guildwars2.com/images/e/e3/Evoker_icon_small.png", "https://wiki.guildwars2.com/images/e/e3/Evoker_icon_small.png"],
  	#Mesmer Professions
  	"Mesmer": ["https://wiki.guildwars2.com/images/3/38/Mesmer_tango_icon_20px.png", "https://wiki.guildwars2.com/images/3/38/Mesmer_tango_icon_48px.png"],
  	"Chronomancer": ["https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_20px.png", "https://wiki.guildwars2.com/images/f/f2/Chronomancer_tango_icon_48px.png"],
  	"Mirage": ["https://wiki.guildwars2.com/images/9/94/Mirage_tango_icon_20px.png", "https://wiki.guildwars2.com/images/9/94/Mirage_tango_icon_48px.png"],
  	"Virtuoso": ["https://wiki.guildwars2.com/images/2/21/Virtuoso_tango_icon_20px.png", "https://wiki.guildwars2.com/images/2/21/Virtuoso_tango_icon_48px.png"],
-+	"Troubadour": ["https://wiki.guildwars2.com/images/f/f4/Troubadour_icon_small.png", "https://wiki.guildwars2.com/images/f/f4/Troubadour_icon_small.png"], # TODO: Find 48px icons
++	"Troubadour": ["https://wiki.guildwars2.com/images/f/f4/Troubadour_icon_small.png", "https://wiki.guildwars2.com/images/f/f4/Troubadour_icon_small.png"],
  	#Necromancer Professions
  	"Necromancer": ["https://wiki.guildwars2.com/images/e/ea/Necromancer_tango_icon_20px.png", "https://wiki.guildwars2.com/images/e/ea/Necromancer_tango_icon_48px.png"],
  	"Reaper": ["https://wiki.guildwars2.com/images/3/39/Reaper_tango_icon_20px.png", "https://wiki.guildwars2.com/images/3/39/Reaper_tango_icon_48px.png"],
  	"Scourge": ["https://wiki.guildwars2.com/images/4/49/Scourge_tango_icon_20px.png", "https://wiki.guildwars2.com/images/4/49/Scourge_tango_icon_48px.png"],
  	"Harbinger": ["https://wiki.guildwars2.com/images/e/eb/Harbinger_tango_icon_20px.png", "https://wiki.guildwars2.com/images/e/eb/Harbinger_tango_icon_48px.png"],
-+	"Ritualist": ["https://wiki.guildwars2.com/images/f/f9/Ritualist_icon_small.png", "https://wiki.guildwars2.com/images/f/f9/Ritualist_icon_small.png"], # TODO: Find 48px icons
++	"Ritualist": ["https://wiki.guildwars2.com/images/f/f9/Ritualist_icon_small.png", "https://wiki.guildwars2.com/images/f/f9/Ritualist_icon_small.png"],
  	#Engineer Professions
  	"Engineer": ["https://wiki.guildwars2.com/images/d/dd/Engineer_tango_icon_20px.png", "https://wiki.guildwars2.com/images/d/dd/Engineer_tango_icon_48px.png"],
  	"Scrapper": ["https://wiki.guildwars2.com/images/4/4a/Scrapper_tango_icon_20px.png", "https://wiki.guildwars2.com/images/4/4a/Scrapper_tango_icon_48px.png"],
  	"Holosmith": ["https://wiki.guildwars2.com/images/4/4f/Holosmith_tango_icon_20px.png", "https://wiki.guildwars2.com/images/4/4f/Holosmith_tango_icon_48px.png"],
  	"Mechanist": ["https://wiki.guildwars2.com/images/f/f5/Mechanist_tango_icon_20px.png", "https://wiki.guildwars2.com/images/f/f5/Mechanist_tango_icon_48px.png"],
-+	"Amalgam": ["https://wiki.guildwars2.com/images/d/d0/Amalgam_icon_small.png", "https://wiki.guildwars2.com/images/d/d0/Amalgam_icon_small.png"], # TODO: Find 48px icons
++	"Amalgam": ["https://wiki.guildwars2.com/images/d/d0/Amalgam_icon_small.png", "https://wiki.guildwars2.com/images/d/d0/Amalgam_icon_small.png"],
  	#Ranger Professions
  	"Ranger": ["https://wiki.guildwars2.com/images/b/b5/Ranger_tango_icon_20px.png", "https://wiki.guildwars2.com/images/b/b5/Ranger_tango_icon_48px.png"],
  	"Druid": ["https://wiki.guildwars2.com/images/9/91/Druid_tango_icon_20px.png", "https://wiki.guildwars2.com/images/9/91/Druid_tango_icon_48px.png"],
  	"Soulbeast": ["https://wiki.guildwars2.com/images/4/4f/Soulbeast_tango_icon_20px.png", "https://wiki.guildwars2.com/images/4/4f/Soulbeast_tango_icon_48px.png"],
  	"Untamed": ["https://wiki.guildwars2.com/images/9/90/Untamed_tango_icon_20px.png", "https://wiki.guildwars2.com/images/9/90/Untamed_tango_icon_48px.png"],
-+	"Galeshot": ["https://wiki.guildwars2.com/images/a/a7/Galeshot_icon_small.png", "https://wiki.guildwars2.com/images/a/a7/Galeshot_icon_small.png"], # TODO: Find 48px icons
++	"Galeshot": ["https://wiki.guildwars2.com/images/a/a7/Galeshot_icon_small.png", "https://wiki.guildwars2.com/images/a/a7/Galeshot_icon_small.png"],
  	#Thief Professions
  	"Thief": ["https://wiki.guildwars2.com/images/c/cd/Thief_tango_icon_20px.png", "https://wiki.guildwars2.com/images/c/cd/Thief_tango_icon_48px.png"],
  	"Daredevil": ["https://wiki.guildwars2.com/images/6/61/Daredevil_tango_icon_20px.png", "https://wiki.guildwars2.com/images/6/61/Daredevil_tango_icon_48px.png"],
  	"Deadeye": ["https://wiki.guildwars2.com/images/8/81/Deadeye_tango_icon_20px.png", "https://wiki.guildwars2.com/images/8/81/Deadeye_tango_icon_48px.png"],
  	"Specter": ["https://wiki.guildwars2.com/images/d/d7/Specter_tango_icon_20px.png", "https://wiki.guildwars2.com/images/d/d7/Specter_tango_icon_48px.png"],
-+	"Antiquary": ["https://wiki.guildwars2.com/images/d/d1/Antiquary_icon_small.png", "https://wiki.guildwars2.com/images/d/d1/Antiquary_icon_small.png"], # TODO: Find 48px icons
++	"Antiquary": ["https://wiki.guildwars2.com/images/d/d1/Antiquary_icon_small.png", "https://wiki.guildwars2.com/images/d/d1/Antiquary_icon_small.png"],
  	#Guardian Progessions
  	"Guardian": ["https://wiki.guildwars2.com/images/5/53/Guardian_tango_icon_20px.png", "https://wiki.guildwars2.com/images/5/53/Guardian_tango_icon_48px.png"],
  	"Dragonhunter": ["https://wiki.guildwars2.com/images/f/fe/Dragonhunter_tango_icon_20px.png", "https://wiki.guildwars2.com/images/f/fe/Dragonhunter_tango_icon_48px.png"],
  	"Firebrand": ["https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_20px.png", "https://wiki.guildwars2.com/images/f/ff/Firebrand_tango_icon_48px.png"],
  	"Willbender": ["https://wiki.guildwars2.com/images/d/dd/Willbender_tango_icon_20px.png", "https://wiki.guildwars2.com/images/d/dd/Willbender_tango_icon_48px.png"],
-+	"Luminary": ["https://wiki.guildwars2.com/images/7/7b/Luminary_icon_small.png", "https://wiki.guildwars2.com/images/7/7b/Luminary_icon_small.png"], # TODO: Find 48px icons
++	"Luminary": ["https://wiki.guildwars2.com/images/7/7b/Luminary_icon_small.png", "https://wiki.guildwars2.com/images/7/7b/Luminary_icon_small.png"],
  	#Revenant Professions
  	"Revenant": ["https://wiki.guildwars2.com/images/5/53/Revenant_tango_icon_20px.png", "https://wiki.guildwars2.com/images/5/53/Revenant_tango_icon_48px.png"],
  	"Herald": ["https://wiki.guildwars2.com/images/8/8f/Herald_tango_icon_20px.png", "https://wiki.guildwars2.com/images/8/8f/Herald_tango_icon_48px.png"],
  	"Renegade": ["https://wiki.guildwars2.com/images/4/4c/Renegade_tango_icon_20px.png", "https://wiki.guildwars2.com/images/4/4c/Renegade_tango_icon_48px.png"],
  	"Vindicator": ["https://wiki.guildwars2.com/images/d/dd/Vindicator_tango_icon_20px.png", "https://wiki.guildwars2.com/images/d/dd/Vindicator_tango_icon_48px.png"],
-+	"Conduit": ["https://wiki.guildwars2.com/images/a/a1/Conduit_icon_small.png", "https://wiki.guildwars2.com/images/a/a1/Conduit_icon_small.png"], # TODO: Find 48px icons
++	"Conduit": ["https://wiki.guildwars2.com/images/a/a1/Conduit_icon_small.png", "https://wiki.guildwars2.com/images/a/a1/Conduit_icon_small.png"],
  	#Warrior Professions
  	"Warrior": ["https://wiki.guildwars2.com/images/2/28/Warrior_tango_icon_20px.png", "https://wiki.guildwars2.com/images/2/28/Warrior_tango_icon_48px.png"],
  	"Berserker": ["https://wiki.guildwars2.com/images/7/70/Berserker_tango_icon_20px.png", "https://wiki.guildwars2.com/images/7/70/Berserker_tango_icon_48px.png"],
  	"Spellbreaker": ["https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_20px.png", "https://wiki.guildwars2.com/images/4/42/Spellbreaker_tango_icon_48px.png"],
 -	"Bladesworn": ["https://wiki.guildwars2.com/images/f/f8/Bladesworn_tango_icon_20px.png", "https://wiki.guildwars2.com/images/f/f8/Bladesworn_tango_icon_48px.png"]
 +	"Bladesworn": ["https://wiki.guildwars2.com/images/f/f8/Bladesworn_tango_icon_20px.png", "https://wiki.guildwars2.com/images/f/f8/Bladesworn_tango_icon_48px.png"],
-+	"Paragon": ["https://wiki.guildwars2.com/images/1/13/Paragon_icon_small.png", "https://wiki.guildwars2.com/images/1/13/Paragon_icon_small.png"] # TODO: Find 48px icons
++	"Paragon": ["https://wiki.guildwars2.com/images/1/13/Paragon_icon_small.png", "https://wiki.guildwars2.com/images/1/13/Paragon_icon_small.png"]
  }
 \ No newline at end of file
 diff --git a/arcdps_top_stats_parser/TW5_parse_top_stats_detailed.py b/arcdps_top_stats_parser/TW5_parse_top_stats_detailed.py
