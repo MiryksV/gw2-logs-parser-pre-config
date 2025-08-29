@@ -71,7 +71,7 @@ Write-Output "######## Update arcdps_top_stats_parser @latest version ##########
 $topStatsParserRepoUrl = "https://api.github.com/repos/Drevarr/arcdps_top_stats_parser/releases/latest"
 $topStatsParserRepoUrlResponse = Invoke-RestMethod -Uri $topStatsParserRepoUrl
 $topStatsParserLatestVersion = $topStatsParserRepoUrlResponse.tag_name
-$topStatsParserCurrentVersion = "v3.5.20-TW5"
+$topStatsParserCurrentVersion = "v3.6.1.0-TW"
 if ($topStatsParserCurrentVersion -ne $topStatsParserLatestVersion) {
   Write-Output "Downloading & updating arcdps_top_stats_parser @latest $topStatsParserLatestVersion..."
   # Fetch the zip file

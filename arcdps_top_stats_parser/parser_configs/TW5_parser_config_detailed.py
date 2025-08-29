@@ -93,46 +93,55 @@ profession_abbreviations["Guardian"] = "Guardian"
 profession_abbreviations["Dragonhunter"] = "Dragonhunter"
 profession_abbreviations["Firebrand"] = "Firebrand"
 profession_abbreviations["Willbender"] = "Willbender"
+profession_abbreviations["Luminary"] = "Luminary"
 
 profession_abbreviations["Revenant"] = "Revenant"
 profession_abbreviations["Herald"] = "Herald"
 profession_abbreviations["Renegade"] = "Renegade"
-profession_abbreviations["Vindicator"] = "Vindicator"    
+profession_abbreviations["Vindicator"] = "Vindicator"
+profession_abbreviations["Conduit"] = "Conduit"
 
 profession_abbreviations["Warrior"] = "Warrior"
 profession_abbreviations["Berserker"] = "Berserker"
 profession_abbreviations["Spellbreaker"] = "Spellbreaker"
 profession_abbreviations["Bladesworn"] = "Bladesworn"
+profession_abbreviations["Paragon"] = "Paragon"
 
 profession_abbreviations["Engineer"] = "Engineer"
 profession_abbreviations["Scrapper"] = "Scrapper"
 profession_abbreviations["Holosmith"] = "Holosmith"
 profession_abbreviations["Mechanist"] = "Mechanist"    
+profession_abbreviations["Amalgam"] = "Amalgam"
 
 profession_abbreviations["Ranger"] = "Ranger"
 profession_abbreviations["Druid"] = "Druid"
 profession_abbreviations["Soulbeast"] = "Soulbeast"
 profession_abbreviations["Untamed"] = "Untamed"    
+profession_abbreviations["Galeshot"] = "Galeshot"
 
 profession_abbreviations["Thief"] = "Thief"
 profession_abbreviations["Daredevil"] = "Daredevil"
 profession_abbreviations["Deadeye"] = "Deadeye"
 profession_abbreviations["Specter"] = "Specter"
+profession_abbreviations["Antiquary"] = "Antiquary"
 
 profession_abbreviations["Elementalist"] = "Elementalist"
 profession_abbreviations["Tempest"] = "Tempest"
 profession_abbreviations["Weaver"] = "Weaver"
 profession_abbreviations["Catalyst"] = "Catalyst"
+profession_abbreviations["Evoker"] = "Evoker"
 
 profession_abbreviations["Mesmer"] = "Mesmer"
 profession_abbreviations["Chronomancer"] = "Chronomancer"
 profession_abbreviations["Mirage"] = "Mirage"
 profession_abbreviations["Virtuoso"] = "Virtuoso"
+profession_abbreviations["Troubadour"] = "Troubadour"
     
 profession_abbreviations["Necromancer"] = "Necromancer"
 profession_abbreviations["Reaper"] = "Reaper"
 profession_abbreviations["Scourge"] = "Scourge"
 profession_abbreviations["Harbinger"] = "Harbinger"
+profession_abbreviations["Ritualist"] = "Ritualist"
 
 # name each stat will be written as
 stat_names = {}

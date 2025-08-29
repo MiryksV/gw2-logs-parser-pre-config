@@ -4432,7 +4432,7 @@ def get_stats_from_fight_json(fight_json, config, log):
 					minion_Data[profession]["player"][name][minionName] = minionCount
 				else:
 					minion_Data[profession]["player"][name][minionName] += minionCount
-
+	"""
 	#Death_OnTag Tracking
 	tagPositions = {}
 	dead_Tag = 0
@@ -4485,6 +4485,7 @@ def get_stats_from_fight_json(fight_json, config, log):
 			playerDeaths = dict(id['combatReplayData']['dead'])
 			playerDowns = dict(id['combatReplayData']['down'])
 			playerDistToTag = id['statsAll'][0]['distToCom']
+			player_offset = math.floor(id['combatReplayData']['start']/pollingRate)
 			for deathKey, deathValue in playerDeaths.items():
 				if deathKey < 0: #Handle death on the field before main squad combat log starts
 					continue
@@ -4492,7 +4493,7 @@ def get_stats_from_fight_json(fight_json, config, log):
 				for downKey, downValue in playerDowns.items():
 					if deathKey == downValue:
 						#process data for downKey
-						positionMark = int(downKey/pollingRate)
+						positionMark = int(downKey/pollingRate)-player_offset
 						positionDown = id['combatReplayData']['positions'][positionMark]
 						x1 = positionDown[0]
 						y1 = positionDown[1]
@@ -4536,7 +4537,7 @@ def get_stats_from_fight_json(fight_json, config, log):
 
 		if playerDistToTag <= Run_Back:
 			Death_OnTag[deathOnTag_prof_name]["distToTag"].append(playerDistToTag)
-		
+		"""
 	#Collect Box Plot DPS data by Profession, Prof_Name, Name, Acct
 	durationMS = fight_json['durationMS']
 	#num_enemies = len(fight_json['targets']-1)
@@ -5096,7 +5097,7 @@ def write_stats_box_plots(players, top_players, stat, ProfessionColor, myDate, i
 	#output Box Plot Professions
 	jsonStr = json.dumps(ProfessionColor)
 	print_string +='const ProfessionColor = '+jsonStr+';\n'
-	print_string +='const short_Prof = {"Guardian": "Gdn", "Dragonhunter": "Dgh",	"Firebrand": "Fbd",	"Willbender": "Wbd", "Warrior": "War", "Berserker": "Brs", "Spellbreaker": "Spb", "Bladesworn": "Bds", "Engineer": "Eng", "Scrapper": "Scr", "Holosmith": "Hls", "Mechanist": "Mec", "Ranger": "Rgr", "Druid": "Dru", "Soulbeast": "Slb", "Untamed": "Unt", "Thief": "Thf", "Daredevil": "Dar", "Deadeye": "Ded", "Specter": "Spe", "Elementalist": "Ele", "Tempest": "Tmp", "Weaver": "Wea", "Catalyst": "Cat", "Mesmer": "Mes", "Chronomancer": "Chr", "Mirage": "Mir", "Virtuoso": "Vir", "Necromancer": "Nec", "Reaper": "Rea", "Scourge": "Scg", "Harbinger": "Har", "Revenant": "Rev", "Herald": "Her", "Renegade": "Ren", "Vindicator": "Vin", "Unknown": "Ukn"};\n'
+	print_string +='const short_Prof = {"Guardian": "Gdn", "Dragonhunter": "Dgh",	"Firebrand": "Fbd",	"Willbender": "Wbd", "Luminary": "Lum", "Warrior": "War", "Berserker": "Brs", "Spellbreaker": "Spb", "Bladesworn": "Bds", "Paragon": "Par", "Engineer": "Eng", "Scrapper": "Scr", "Holosmith": "Hls", "Mechanist": "Mec", "Amalgam": "Aml", "Ranger": "Rgr", "Druid": "Dru", "Soulbeast": "Slb", "Untamed": "Unt", "Galeshot": "Gsh", "Thief": "Thf", "Daredevil": "Dar", "Deadeye": "Ded", "Specter": "Spe", "Antiquary": "Ant", "Elementalist": "Ele", "Tempest": "Tmp", "Weaver": "Wea", "Catalyst": "Cat", "Evoker": "Evo", "Mesmer": "Mes", "Chronomancer": "Chr", "Mirage": "Mir", "Virtuoso": "Vir","Troubadour": "Tbd", "Necromancer": "Nec", "Reaper": "Rea", "Scourge": "Scg", "Harbinger": "Har", "Ritualist": "Rit", "Revenant": "Rev", "Herald": "Her", "Renegade": "Ren", "Vindicator": "Vin", "Conduit": "Con", "Unknown": "Ukn"};\n'
 	print_string += "option = {\n"
 	print_string += "  title: [\n"
 	if stat in chart_per_fight:

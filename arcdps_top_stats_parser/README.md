@@ -1,7 +1,13 @@
-![GitHub](https://img.shields.io/github/license/Drevarr/arcdps_top_stats_parser)
+![Static Badge](https://img.shields.io/badge/Status-Inactive-yellow?style=flat)  ![GitHub](https://img.shields.io/github/license/Drevarr/arcdps_top_stats_parser)
 
+# Status
 
-![Alt](https://repobeats.axiom.co/api/embed/d07727b06a0bcacb7692ccd3c30bd9cfdb2394f7.svg "Repobeats analytics image")
+This project is now in maintenance mode. Active development and feature additions have ceased. While the code will remain available, bug fixes and security patches will be considered, but new features and major changes are unlikely
+
+# Alternative Project:  
+
+Active Log Summary development continues at https://github.com/Drevarr/GW2_EI_log_combiner 
+
 
 # TW5 Modifications #
 
@@ -105,3 +111,6 @@ Output files containing the tops stats are also generated in the json folder. By
 
 ## Settings ##
 For changing any of the default settings, check out the wiki pages on ![command line options](https://github.com/Freyavf/arcdps_top_stats_parser/wiki/Command-line-options) and ![configuration options](https://github.com/Freyavf/arcdps_top_stats_parser/wiki/Configuration-options).
+
+
+![Alt](https://repobeats.axiom.co/api/embed/d07727b06a0bcacb7692ccd3c30bd9cfdb2394f7.svg "Repobeats analytics image")
