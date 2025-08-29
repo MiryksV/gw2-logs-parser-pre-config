@@ -1,7 +1,7 @@
-﻿diff --git a/TW5_parse_top_stats_detailed.py b/TW5_parse_top_stats_detailed.py
-index 32e3933..50fe772 100644
---- a/TW5_parse_top_stats_detailed.py
-+++ b/TW5_parse_top_stats_detailed.py
+diff --git a/arcdps_top_stats_parser/TW5_parse_top_stats_detailed.py b/arcdps_top_stats_parser/TW5_parse_top_stats_detailed.py
+index 2542d47..51142fd 100644
+--- a/arcdps_top_stats_parser/TW5_parse_top_stats_detailed.py
++++ b/arcdps_top_stats_parser/TW5_parse_top_stats_detailed.py
 @@ -40,9 +40,13 @@ if __name__ == '__main__':
  	parser.add_argument('-l', '--log_file', dest="log_file", help="Logging file with all the output")
  	parser.add_argument('-c', '--config_file', dest="config_file", help="Config file with all the settings", default="TW5_parser_config_detailed")

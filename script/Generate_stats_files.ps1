@@ -246,12 +246,10 @@ Write-Output "######## Generating .tid file from .json, using arcdps_top_stats_p
 ## Patch Python script (ddd argument to adjust date with extract date, handle unknown beta professions)
 $topStatsParserDir = "..\arcdps_top_stats_parser"
 $patchArg = "addExtractDateInArgumentPythonScript.patch"
-$patchUnknown = "handleUnknownProfessions.patch"
 Copy-Item -Path "$patchesPath\$patchArg" -Destination $topStatsParserDir -Force
-Copy-Item -Path "$patchesPath\$patchUnknown" -Destination $topStatsParserDir -Force
 Set-Location $topStatsParserDir
 git apply $patchArg -q
-git apply $patchUnknown -q
+Remove-Item -Path "$topStatsParserDir\$patchArg"
 Set-Location "..\script"
 ## Running script with extractDate
 if ($displayExtractDate -eq "now") {
