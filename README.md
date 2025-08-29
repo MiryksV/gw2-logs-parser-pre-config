@@ -1,4 +1,6 @@
-![Static Badge](https://img.shields.io/badge/Status-Active-brightgreen?style=flat) ![GitHub](https://img.shields.io/github/license/MiryksV/gw2-logs-parser-pre-config)
+![Static Badge](https://img.shields.io/badge/status-active-brightgreen?style=flat)
+![GitHub License](https://img.shields.io/github/license/MiryksV/gw2-logs-parser-pre-config)
+![Static Badge](https://img.shields.io/badge/version-3.0.0-blue?style=flat)
 
 # GW2 Logs Parser Preconfig
 
@@ -29,9 +31,13 @@ Logs Persistance:
 In `script\` folder:
 
 1. Install the required softwares (see. [System Requirements](https://github.com/MiryksV/gw2-logs-parser-pre-config?tab=readme-ov-file#system-requirements))
-2. Open `edit_me.conf` file and specify:
-   - `ARC_DPS_LOGS_DIR`: path of you ArcDps Logs directory containing the `.zevtc` files
-   - `EXTRACT_DATE`: date (in `YYYYMMDD` format) to select files of a given date or of the current day (`EXTRACT_DATE=""`)
+2. Under `\config`:
+   1. Open `edit_me.conf` file and specify:
+      - `ARC_DPS_LOGS_DIR`: path of you ArcDps Logs directory containing the `.zevtc` files
+      - `EXTRACT_DATE`: date (in `YYYYMMDD` format) to select files of a given date or of the current day (`EXTRACT_DATE=""`)
+   2. (Optionnal) To also upload logs to [dps.report](https://dps.report), open `EI_detailed_json_combat_replay_custom.conf` file and specify:
+      - `UploadToDPSReports` to `True`
+      - `DPSReportUserToken` to your _User Token_ (get yours here https://dps.report)
 3. Excecute `Generate_stats_files.exe` \
    or \
    Excecute `Generate_stats_files.ps1` with Windows PowerShell \

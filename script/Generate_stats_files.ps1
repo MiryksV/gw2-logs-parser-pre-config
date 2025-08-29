@@ -1,7 +1,17 @@
 $scriptStartTime = Get-Date
 
+# Specific script paths
+$eliteInsightsDir = "..\GW2EICLI"
+$topStatsParserDir = "..\arcdps_top_stats_parser"
+$customConfigPath = ".\config"
+$dataPath = ".\data"
+$patchesPath = ".\patches"
+$logsPath = ".\data\logs"
+$jsonPath = ".\data\json"
+$tidPath = ".\data\tid"
+
 # Read config file
-$configFile = ".\edit_me.conf"
+$configFile = "$customConfigPath\edit_me.conf"
 $configTable = @{}
 Get-Content -Path $configFile | ForEach-Object {
   if ($_ -match '=') {
@@ -39,16 +49,6 @@ $eliteInsightsTargetVersion = ""
 if ($configTable.ContainsKey("GW2EI_VERSION")) {
   $eliteInsightsTargetVersion = $configTable["GW2EI_VERSION"]
 }
-
-# Specific script paths
-$eliteInsightsDir = "..\GW2EICLI"
-$topStatsParserDir = "..\arcdps_top_stats_parser"
-$customConfigPath = ".\custom-config"
-$dataPath = ".\data"
-$patchesPath = ".\patches"
-$logsPath = ".\data\logs"
-$jsonPath = ".\data\json"
-$tidPath = ".\data\tid"
 
 # Display correctly the EXTRACT_DATE if it's empty
 if ($extractDate -eq "") {
