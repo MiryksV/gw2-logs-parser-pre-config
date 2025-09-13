@@ -5,7 +5,6 @@ $eliteInsightsDir = "..\GW2EICLI"
 $topStatsParserDir = "..\arcdps_top_stats_parser"
 $customConfigPath = ".\config"
 $dataPath = ".\data"
-$patchesPath = ".\patches"
 $logsPath = ".\data\logs"
 $jsonPath = ".\data\json"
 $tidPath = ".\data\tid"
@@ -71,7 +70,7 @@ Write-Output "######## Update arcdps_top_stats_parser @latest version ##########
 $topStatsParserRepoUrl = "https://api.github.com/repos/Drevarr/arcdps_top_stats_parser/releases/latest"
 $topStatsParserRepoUrlResponse = Invoke-RestMethod -Uri $topStatsParserRepoUrl
 $topStatsParserLatestVersion = $topStatsParserRepoUrlResponse.tag_name
-$topStatsParserCurrentVersion = "v3.6.1.0-TW"
+$topStatsParserCurrentVersion = "v3.6.2.0-TW"
 if ($topStatsParserCurrentVersion -ne $topStatsParserLatestVersion) {
   Write-Output "Downloading & updating arcdps_top_stats_parser @latest $topStatsParserLatestVersion..."
   # Fetch the zip file
@@ -243,14 +242,6 @@ Get-ChildItem -Path "$logsPath\*.json" | ForEach-Object {
 
 # Generate .tid file from .json, using arcdps_top_stats_parser
 Write-Output "######## Generating .tid file from .json, using arcdps_top_stats_parser ######"
-## Patch Python script (ddd argument to adjust date with extract date, handle unknown beta professions)
-$topStatsParserDir = "..\arcdps_top_stats_parser"
-$patchArg = "addExtractDateInArgumentPythonScript.patch"
-Copy-Item -Path "$patchesPath\$patchArg" -Destination $topStatsParserDir -Force
-Set-Location $topStatsParserDir
-git apply $patchArg -q
-Remove-Item -Path "$topStatsParserDir\$patchArg"
-Set-Location "..\script"
 ## Running script with extractDate
 if ($displayExtractDate -eq "now") {
   # TODO: add verbose option

@@ -40,9 +40,14 @@ if __name__ == '__main__':
 	parser.add_argument('-l', '--log_file', dest="log_file", help="Logging file with all the output")
 	parser.add_argument('-c', '--config_file', dest="config_file", help="Config file with all the settings", default="TW5_parser_config_detailed")
 	parser.add_argument('-a', '--anonymized', dest="anonymize", help="Create an anonymized version of the top stats. All account and character names will be replaced.", default=False, action='store_true')
+	parser.add_argument('-d', '--extract_date', dest="extract_date", help="Extract date of the logs, different from now")
 	args = parser.parse_args()
 
-	myDate = datetime.datetime.now()
+	if args.extract_date is None:
+		myDate = datetime.datetime.now()
+	else:
+		myDate = datetime.datetime.strptime(args.extract_date, '%Y-%m-%dT%H:%M:%S')
+
 
 	if not os.path.isdir(args.input_directory):
 		print("Directory ",args.input_directory," is not a directory or does not exist!")
