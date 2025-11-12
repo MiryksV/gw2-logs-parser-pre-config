@@ -2364,6 +2364,8 @@ def collect_stat_data(args, config, log, anonymize=False):
 
 			if not_in_squad:
 				continue
+			if not player_data['activeTimes'][0]:
+				continue
 			create_new_player = False
 			build_swapped = False
 			
@@ -2418,7 +2420,8 @@ def collect_stat_data(args, config, log, anonymize=False):
 			skill_map = json_data['skillMap']
 
 			#Collect Role Data for Skill Casts
-			get_skill_casts_by_role(player_data, name, player_prof_role, playerRoleActiveTime, skill_map)
+			if playerRoleActiveTime > 0:
+				get_skill_casts_by_role(player_data, name, player_prof_role, playerRoleActiveTime, skill_map)
 
 
 			# Collect Gear Buff Data for each player
@@ -2513,7 +2516,10 @@ def collect_stat_data(args, config, log, anonymize=False):
 								RelicDataSkills[player_name_prof][skill_name] = {stat: item[stat] for stat in item}
 							else:
 								for stat in item:
-									RelicDataSkills[player_name_prof][skill_name][stat] += item[stat]
+									if stat not in RelicDataSkills[player_name_prof][skill_name]:
+										RelicDataSkills[player_name_prof][skill_name][stat] = item[stat]
+									else:
+										RelicDataSkills[player_name_prof][skill_name][stat] += item[stat]
 							for cast in player_data['rotation']:
 								if cast['id'] == skill_id:
 									if 'casts' not in RelicDataSkills[player_name_prof][skill_name]:
@@ -3644,7 +3650,11 @@ def get_stats_from_fight_json(fight_json, config, log):
 	squad_damage_output[fight_name] = {}
 
 	current_Tag = ''
-	teamID = {698: 'Red', 705: 'Red', 706: 'Red', 882: 'Red', 2520: 'Red', 2739: 'Green', 2741: 'Green', 2752: 'Green', 2763: 'Green', 432: 'Blue', 1277: 'Blue'}
+	teamID = {
+		698: 'Red', 705: 'Red', 706: 'Red', 707: 'Red', 882: 'Red', 2520: 'Red', 
+		2739: 'Green', 2741: 'Green', 2752: 'Green', 2763: 'Green', 2767: 'Green',
+		432: 'Blue', 433: 'Blue', 1277: 'Blue'
+		}
 
 	#creat dictionary of skill_ids and skill_names
 	skills = fight_json['skillMap']
@@ -3934,7 +3944,10 @@ def get_stats_from_fight_json(fight_json, config, log):
 							battle_Standard[squadDps_prof_name][item]=skillData[item]
 					else:
 						for item in skillData:
+							if item not in battle_Standard[squadDps_prof_name]:
+								battle_Standard[squadDps_prof_name][item]=0
 							battle_Standard[squadDps_prof_name][item]+=skillData[item]
+
 
 		if 'rotation' in player:
 			squadDps_name = player['name']

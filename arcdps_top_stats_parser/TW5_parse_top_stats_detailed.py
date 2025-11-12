@@ -878,6 +878,8 @@ if __name__ == '__main__':
 		print_to_file(output, print_string)
 
 		for playerName in SkillCast[skillRole]['player']:
+			if SkillCast[skillRole]['player'][playerName]['ActiveTime'] == 0:
+				continue
 			playerFights = SkillCast[skillRole]['player'][playerName]['Fights']
 			playerActive = SkillCast[skillRole]['player'][playerName]['ActiveTime']
 			print_string = "|"+playerName+" | "+str(playerFights)+"| "+str(playerActive)+"| "

@@ -70,7 +70,7 @@ Write-Output "######## Update arcdps_top_stats_parser @latest version ##########
 $topStatsParserRepoUrl = "https://api.github.com/repos/Drevarr/arcdps_top_stats_parser/releases/latest"
 $topStatsParserRepoUrlResponse = Invoke-RestMethod -Uri $topStatsParserRepoUrl
 $topStatsParserLatestVersion = $topStatsParserRepoUrlResponse.tag_name
-$topStatsParserCurrentVersion = "v3.6.2.0-TW"
+$topStatsParserCurrentVersion = "v3.6.5.0-TW"
 if ($topStatsParserCurrentVersion -ne $topStatsParserLatestVersion) {
   Write-Output "Downloading & updating arcdps_top_stats_parser @latest $topStatsParserLatestVersion..."
   # Fetch the zip file
@@ -106,7 +106,7 @@ else {
 Write-Output "######## Update GW2-Elite-Insights-Parser CLI @latest|target version #########"
 $eliteInsightsRepoUrl = "https://api.github.com/repos/baaron4/GW2-Elite-Insights-Parser/releases/latest"
 $eliteInsightsLatestVersion = (Invoke-RestMethod -Uri $eliteInsightsRepoUrl).tag_name
-$eliteInsightsCurrentVersion = "v3.13.0.0"
+$eliteInsightsCurrentVersion = "v3.15.0.1"
 # Fetch the zip file
 $eliteInsightsAssetName = "GW2EICLI.zip"
 ## Update GW2-Elite-Insights-Parser @target version if specified
