@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "GuildWars2EliteInsights-CLI/1.0.0": {
         "dependencies": {
-          "GW2EIParserCommons": "0.17.0"
+          "GW2EIParserCommons": "0.17.2"
         },
         "runtime": {
           "GuildWars2EliteInsights-CLI.dll": {}
@@ -124,17 +124,17 @@
       "System.Text.Encoding.CodePages/8.0.0": {},
       "System.Text.Json/8.0.5": {},
       "System.ValueTuple/4.5.0": {},
-      "GW2EIBuilders/0.70.0": {
+      "GW2EIBuilders/0.71.0": {
         "dependencies": {
-          "GW2EIEvtcParser": "0.74.1",
+          "GW2EIEvtcParser": "0.74.2",
           "GW2EIGW2API": "4.0.0",
-          "GW2EIJSON": "3.15.0",
+          "GW2EIJSON": "3.16.0",
           "System.Text.Encoding.CodePages": "8.0.0"
         },
         "runtime": {
           "GW2EIBuilders.dll": {
-            "assemblyVersion": "0.70.0.0",
-            "fileVersion": "0.70.0.0"
+            "assemblyVersion": "0.71.0.0",
+            "fileVersion": "0.71.0.0"
           }
         }
       },
@@ -160,14 +160,14 @@
           }
         }
       },
-      "GW2EIEvtcParser/0.74.1": {
+      "GW2EIEvtcParser/0.74.2": {
         "dependencies": {
           "GW2EIGW2API": "4.0.0"
         },
         "runtime": {
           "GW2EIEvtcParser.dll": {
-            "assemblyVersion": "0.74.1.0",
-            "fileVersion": "0.74.1.0"
+            "assemblyVersion": "0.74.2.0",
+            "fileVersion": "0.74.2.0"
           }
         }
       },
@@ -182,23 +182,23 @@
           }
         }
       },
-      "GW2EIJSON/3.15.0": {
+      "GW2EIJSON/3.16.0": {
         "dependencies": {
           "System.Text.Json": "8.0.5"
         },
         "runtime": {
           "GW2EIJSON.dll": {
-            "assemblyVersion": "3.15.0.0",
-            "fileVersion": "3.15.0.0"
+            "assemblyVersion": "3.16.0.0",
+            "fileVersion": "3.16.0.0"
           }
         }
       },
-      "GW2EIParserCommons/0.17.0": {
+      "GW2EIParserCommons/0.17.2": {
         "dependencies": {
-          "GW2EIBuilders": "0.70.0",
+          "GW2EIBuilders": "0.71.0",
           "GW2EIDPSReport": "7.0.0",
           "GW2EIDiscord": "4.0.0",
-          "GW2EIEvtcParser": "0.74.1",
+          "GW2EIEvtcParser": "0.74.2",
           "GW2EIGW2API": "4.0.0",
           "GW2EIUpdater": "1.0.0",
           "GW2EIWingman": "5.0.0",
@@ -206,8 +206,8 @@
         },
         "runtime": {
           "GW2EIParserCommons.dll": {
-            "assemblyVersion": "0.17.0.0",
-            "fileVersion": "0.17.0.0"
+            "assemblyVersion": "0.17.2.0",
+            "fileVersion": "0.17.2.0"
           }
         }
       },
@@ -220,7 +220,7 @@
       },
       "GW2EIWingman/5.0.0": {
         "dependencies": {
-          "GW2EIJSON": "3.15.0",
+          "GW2EIJSON": "3.16.0",
           "System.Text.Json": "8.0.5"
         },
         "runtime": {
@@ -329,7 +329,7 @@
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
     },
-    "GW2EIBuilders/0.70.0": {
+    "GW2EIBuilders/0.71.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -344,7 +344,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "GW2EIEvtcParser/0.74.1": {
+    "GW2EIEvtcParser/0.74.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -354,12 +354,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "GW2EIJSON/3.15.0": {
+    "GW2EIJSON/3.16.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "GW2EIParserCommons/0.17.0": {
+    "GW2EIParserCommons/0.17.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
